@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct CounterView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var counters: [Counter]
 
@@ -77,6 +77,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    CounterView()
         .modelContainer(for: Counter.self, inMemory: true)
 }
