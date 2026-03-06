@@ -13,6 +13,7 @@ struct ClickyApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
+            Counter.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +26,7 @@ struct ClickyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CounterListView()
         }
         .modelContainer(sharedModelContainer)
     }

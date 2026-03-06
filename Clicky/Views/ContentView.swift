@@ -6,18 +6,33 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var count = 0
+    @Environment(\.modelContext) private var modelContext
+    @Query private var counters: [Counter]
+
+    private var counter: Counter? {
+        counters.first
+    }
+
+    private var nameTextField: some View {
+        TextField("Enter name of count", text: Binding(
+            get: { counter?.name ?? "" },
+            set: { counter?.name = $0 }
+        ))
+        .textFieldStyle(.plain)
+        .frame(maxWidth: 280)
+    }
 
     private var countText: some View {
-        Text("\(count)")
+        Text("\(counter?.count ?? 0)")
             .font(.system(size: 48, weight: .bold))
             .monospacedDigit()
     }
 
     private var incrementButton: some View {
-        Button(action: { count += 1 }) {
+        Button(action: { counter?.count += 1 }) {
             Text("+")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -29,7 +44,7 @@ struct ContentView: View {
     }
 
     private var decrementButton: some View {
-        Button(action: { count -= 1 }) {
+        Button(action: { counter?.count -= 1 }) {
             Text("-")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -44,6 +59,7 @@ struct ContentView: View {
         ZStack {
             Color.clear
             VStack(spacing: 24) {
+                nameTextField
                 countText
                 HStack(spacing: 24) {
                     decrementButton
@@ -52,9 +68,15 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            if counters.isEmpty {
+                modelContext.insert(Counter())
+            }
+        }
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: Counter.self, inMemory: true)
 }
