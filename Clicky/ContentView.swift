@@ -16,13 +16,25 @@ struct ContentView: View {
             .monospacedDigit()
     }
 
-    private var tapButton: some View {
+    private var incrementButton: some View {
         Button(action: { count += 1 }) {
-            Text("Tap")
+            Text("+")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .foregroundStyle(.white)
-                .frame(minWidth: 160, minHeight: 80)
+                .frame(minWidth: 80, minHeight: 80)
+                .background(.blue, in: RoundedRectangle(cornerRadius: 16))
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var decrementButton: some View {
+        Button(action: { count -= 1 }) {
+            Text("-")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+                .frame(minWidth: 80, minHeight: 80)
                 .background(.blue, in: RoundedRectangle(cornerRadius: 16))
         }
         .buttonStyle(.plain)
@@ -33,7 +45,10 @@ struct ContentView: View {
             Color.clear
             VStack(spacing: 24) {
                 countText
-                tapButton
+                HStack(spacing: 24) {
+                    decrementButton
+                    incrementButton
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
