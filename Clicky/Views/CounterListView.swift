@@ -85,7 +85,12 @@ private struct CreateCounterSheet: View {
                 .frame(maxWidth: .infinity)
             TextField("Name", text: $counter.name)
                 .textFieldStyle(.roundedBorder)
-            Button("Create") {
+            Text("Increment By")
+                .frame(maxWidth: .infinity)
+            TextField("Increment By", value: $counter.incrementBy, format: .number)
+                .textFieldStyle(.roundedBorder)
+                .keyboardType(.numberPad)
+            Button("Done") {
                 modelContext.insert(counter)
                 onCreated()
                 dismiss()
