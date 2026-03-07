@@ -16,6 +16,7 @@ struct CounterViewListItem: View {
             Button("-") {
                 counter.count -= 1
             }
+            .buttonStyle(.borderless)
             Spacer()
             VStack(alignment: .leading, spacing: 40) {
                 Text(counter.name)
@@ -27,6 +28,7 @@ struct CounterViewListItem: View {
             Button("+") {
                 counter.count += 1
             }
+            .buttonStyle(.borderless)
         }
     }
 }
