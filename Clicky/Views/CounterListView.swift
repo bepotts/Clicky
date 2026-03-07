@@ -1,12 +1,12 @@
 //
-//  CreateCounterView.swift
+//  CounterListView.swift
 //  Clicky
 //
 //  Created by Brandon Potts on 3/4/26.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct CounterListView: View {
     @Environment(\.modelContext) private var modelContext

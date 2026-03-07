@@ -5,8 +5,8 @@
 //  Created by Brandon Potts on 3/4/26.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct ClickyApp: App {
