@@ -12,7 +12,7 @@ import SwiftUI
 struct ClickyApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Counter.self,
+            Counter.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

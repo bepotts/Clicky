@@ -15,7 +15,7 @@ struct CounterListView: View {
     @State private var counterName = ""
     @State private var navigateToCounterView = false
     @State private var newCounter = Counter()
-    
+
     var body: some View {
         NavigationStack {
             Group {
@@ -48,7 +48,7 @@ struct CounterListView: View {
             }
             .sheet(isPresented: $isSheetPresented, onDismiss: handleSheetDismiss) {
                 CreateCounterSheet(counter: newCounter, onCreated: handleCounterCreated)
-                .presentationDetents([.medium])
+                    .presentationDetents([.medium])
             }
             .navigationDestination(isPresented: $navigateToCounterView) {
                 CounterView()

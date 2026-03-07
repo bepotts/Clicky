@@ -17,10 +17,13 @@ struct CounterView: View {
     }
 
     private var nameTextField: some View {
-        TextField("Enter name of count", text: Binding(
-            get: { counter?.name ?? "" },
-            set: { counter?.name = $0 }
-        ))
+        TextField(
+            "Enter name of count",
+            text: Binding(
+                get: { counter?.name ?? "" },
+                set: { counter?.name = $0 }
+            )
+        )
         .textFieldStyle(.plain)
         .frame(maxWidth: 280)
     }
