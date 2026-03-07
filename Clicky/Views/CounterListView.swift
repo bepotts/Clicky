@@ -25,7 +25,7 @@ struct CounterListView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List(counters) { counter in
-                        Text(counter.name)
+                        CounterViewListItem(counter: counter)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     modelContext.delete(counter)
@@ -33,6 +33,15 @@ struct CounterListView: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isSheetPresented = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
             }
