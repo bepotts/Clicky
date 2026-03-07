@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CounterListView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query private var counters: [Counter]
     @State private var isSheetPresented = false
     @State private var counterName = ""
@@ -25,6 +26,13 @@ struct CounterListView: View {
                 } else {
                     List(counters) { counter in
                         Text(counter.name)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    modelContext.delete(counter)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
                     }
                 }
             }
