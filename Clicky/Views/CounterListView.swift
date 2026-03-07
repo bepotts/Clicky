@@ -9,16 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct CounterListView: View {
+    @Query private var counters: [Counter]
     @State private var isSheetPresented = false
     @State private var counterName = ""
     @State private var navigateToCounterView = false
 
     var body: some View {
         NavigationStack {
-            Button("create new counter") {
-                isSheetPresented = true
+            Group {
+                if counters.isEmpty {
+                    Button("create new counter") {
+                        isSheetPresented = true
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    List(counters) { counter in
+                        Text(counter.name)
+                    }
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .sheet(isPresented: $isSheetPresented) {
                 CreateCounterSheet(counterName: $counterName, onCreated: {
                     navigateToCounterView = true
