@@ -14,7 +14,7 @@ struct CounterViewListItem: View {
     var body: some View {
         HStack {
             Button("-") {
-                counter.count -= 1
+                counter.decrement()
             }
             .buttonStyle(.borderless)
             Spacer()
@@ -26,7 +26,7 @@ struct CounterViewListItem: View {
             }
             Spacer()
             Button("+") {
-                counter.count += 1
+                counter.increment()
             }
             .buttonStyle(.borderless)
         }

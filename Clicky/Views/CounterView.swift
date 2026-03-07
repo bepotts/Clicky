@@ -32,7 +32,7 @@ struct CounterView: View {
     }
 
     private var incrementButton: some View {
-        Button(action: { counter?.count += 1 }) {
+        Button(action: { counter?.increment() }) {
             Text("+")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -44,7 +44,7 @@ struct CounterView: View {
     }
 
     private var decrementButton: some View {
-        Button(action: { counter?.count -= 1 }) {
+        Button(action: { counter?.decrement() }) {
             Text("-")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
