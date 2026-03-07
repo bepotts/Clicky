@@ -14,19 +14,24 @@ struct CounterListView: View {
     @State private var isSheetPresented = false
     @State private var counterName = ""
     @State private var navigateToCounterView = false
-    @State private var newCounter = Counter()
+    @State private var selectedCounter: Counter?
 
     var body: some View {
         NavigationStack {
             Group {
                 if counters.isEmpty {
                     Button("create new counter") {
+                        selectedCounter = Counter()
                         isSheetPresented = true
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List(counters) { counter in
                         CounterViewListItem(counter: counter)
+                            .onTapGesture {
+                                selectedCounter = counter
+                                isSheetPresented = true
+                            }
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     modelContext.delete(counter)
@@ -40,6 +45,7 @@ struct CounterListView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
+                        selectedCounter = Counter()
                         isSheetPresented = true
                     } label: {
                         Image(systemName: "plus")
@@ -47,8 +53,10 @@ struct CounterListView: View {
                 }
             }
             .sheet(isPresented: $isSheetPresented, onDismiss: handleSheetDismiss) {
-                CreateCounterSheet(counter: newCounter, onCreated: handleCounterCreated)
-                    .presentationDetents([.medium])
+                if let selectedCounter {
+                    CreateCounterSheet(counter: selectedCounter, onCreated: handleCounterCreated)
+                        .presentationDetents([.medium])
+                }
             }
             .navigationDestination(isPresented: $navigateToCounterView) {
                 CounterView()
@@ -57,7 +65,7 @@ struct CounterListView: View {
     }
 
     private func handleSheetDismiss() {
-        newCounter = Counter()
+        selectedCounter = nil
     }
 
     private func handleCounterCreated() {
