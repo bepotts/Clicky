@@ -14,7 +14,8 @@ struct CounterListView: View {
     @State private var isSheetPresented = false
     @State private var counterName = ""
     @State private var navigateToCounterView = false
-
+    @State private var newCounter = Counter()
+    
     var body: some View {
         NavigationStack {
             Group {
@@ -45,10 +46,8 @@ struct CounterListView: View {
                     }
                 }
             }
-            .sheet(isPresented: $isSheetPresented) {
-                CreateCounterSheet(counterName: $counterName, onCreated: {
-                    navigateToCounterView = true
-                })
+            .sheet(isPresented: $isSheetPresented, onDismiss: handleSheetDismiss) {
+                CreateCounterSheet(counter: newCounter, onCreated: handleCounterCreated)
                 .presentationDetents([.medium])
             }
             .navigationDestination(isPresented: $navigateToCounterView) {
@@ -56,25 +55,31 @@ struct CounterListView: View {
             }
         }
     }
+
+    private func handleSheetDismiss() {
+        newCounter = Counter()
+    }
+
+    private func handleCounterCreated() {
+        // navigateToCounterView = true TODO: Change this once I decide how to handle the navigation
+    }
 }
 
 private struct CreateCounterSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @Binding var counterName: String
+    @Bindable var counter: Counter
     let onCreated: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Name of new Counter")
                 .frame(maxWidth: .infinity)
-            TextField("Name", text: $counterName)
+            TextField("Name", text: $counter.name)
                 .textFieldStyle(.roundedBorder)
             Button("Create") {
-                let counter = Counter(name: counterName)
                 modelContext.insert(counter)
                 onCreated()
-                counterName = ""
                 dismiss()
             }
             .frame(maxWidth: .infinity)
