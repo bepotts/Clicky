@@ -1,0 +1,18 @@
+// Release Configuration
+#include "Base.xcconfig"
+
+// Swift Compiler - Code Generation
+SWIFT_OPTIMIZATION_LEVEL = -O
+SWIFT_COMPILATION_MODE = wholemodule
+
+// Apple Clang - Code Generation
+GCC_OPTIMIZATION_LEVEL = s
+
+// Build Options
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+ENABLE_TESTABILITY = NO
+
+// Deployment
+COPY_PHASE_STRIP = YES
+STRIP_INSTALLED_PRODUCT = YES
+STRIP_SWIFT_SYMBOLS = YES

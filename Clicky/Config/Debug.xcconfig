@@ -1,0 +1,17 @@
+// Debug Configuration
+#include "Base.xcconfig"
+
+// Swift Compiler - Code Generation
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
+
+// Apple Clang - Code Generation
+GCC_OPTIMIZATION_LEVEL = 0
+
+// Build Options
+DEBUG_INFORMATION_FORMAT = dwarf
+ENABLE_TESTABILITY = YES
+
+// Deployment
+COPY_PHASE_STRIP = NO
+STRIP_INSTALLED_PRODUCT = NO
