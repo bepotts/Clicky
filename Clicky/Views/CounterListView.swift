@@ -90,6 +90,11 @@ private struct CreateCounterSheet: View {
             TextField("Increment By", value: $counter.incrementBy, format: .number)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.numberPad)
+            Text("Starting Count")
+                .frame(maxWidth: .infinity)
+            TextField("Starting Count", value: $counter.count, format: .number)
+                .textFieldStyle(.roundedBorder)
+                .keyboardType(.numberPad)
             Button("Done") {
                 modelContext.insert(counter)
                 onCreated()
