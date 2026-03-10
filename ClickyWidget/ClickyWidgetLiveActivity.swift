@@ -6,17 +6,19 @@
 //
 
 import ActivityKit
-import WidgetKit
+import AppIntents
 import SwiftUI
+import WidgetKit
 
 struct ClickyWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        var count: Int
     }
 
     // Fixed non-changing properties about your activity go here!
-    var name: String
+    var title: String
+    var id: UUID
 }
 
 struct ClickyWidgetLiveActivity: Widget {
@@ -24,7 +26,18 @@ struct ClickyWidgetLiveActivity: Widget {
         ActivityConfiguration(for: ClickyWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
-                Text("Hello \(context.state.emoji)")
+                Text("\(context.attributes.title):")
+                Text("\(context.state.count)")
+                HStack(spacing: 24) {
+                    Button(intent: DecrementCounterIntent()) {
+                        Image(systemName: "minus.circle.fill")
+                            .font(.title2)
+                    }
+                    Button(intent: IncrementCounterIntent()) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                    }
+                }
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
@@ -40,15 +53,15 @@ struct ClickyWidgetLiveActivity: Widget {
                     Text("Trailing")
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
+                    Text("Bottom \(context.state.count)")
                     // more content
                 }
             } compactLeading: {
                 Text("L")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text("T \(context.state.count)")
             } minimal: {
-                Text(context.state.emoji)
+                Text("\(context.state.count)")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
@@ -58,17 +71,17 @@ struct ClickyWidgetLiveActivity: Widget {
 
 extension ClickyWidgetAttributes {
     fileprivate static var preview: ClickyWidgetAttributes {
-        ClickyWidgetAttributes(name: "World")
+        ClickyWidgetAttributes(title: "Title", id: UUID())
     }
 }
 
 extension ClickyWidgetAttributes.ContentState {
     fileprivate static var smiley: ClickyWidgetAttributes.ContentState {
-        ClickyWidgetAttributes.ContentState(emoji: "😀")
+        ClickyWidgetAttributes.ContentState(count: 0)
      }
      
      fileprivate static var starEyes: ClickyWidgetAttributes.ContentState {
-         ClickyWidgetAttributes.ContentState(emoji: "🤩")
+         ClickyWidgetAttributes.ContentState(count: 42)
      }
 }
 

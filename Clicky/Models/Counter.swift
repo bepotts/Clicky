@@ -15,8 +15,7 @@ final class Counter {
     var name: String
     var incrementBy: Int
 
-    init(id: UUID = UUID(), count: Int = 0, name: String, incrementBy: Int = 1) {
-        precondition(!name.isEmpty, "Counter name must not be empty")
+    init(id: UUID = UUID(), count: Int = 0, name: String = "", incrementBy: Int = 1) {
         self.id = id
         self.count = count
         self.name = name
