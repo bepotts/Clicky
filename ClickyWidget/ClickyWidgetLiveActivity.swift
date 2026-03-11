@@ -9,6 +9,7 @@ import ActivityKit
 import AppIntents
 import SwiftUI
 import WidgetKit
+import SwiftData
 
 struct ClickyWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
@@ -41,6 +42,7 @@ struct ClickyWidgetLiveActivity: Widget {
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
+            .modelContainer(ModelContainer.shared)
 
         } dynamicIsland: { context in
             DynamicIsland {

@@ -51,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29712F972F62044C0056704D /* ClickyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClickyWidgetExtension.entitlements; sourceTree = "<group>"; };
 		2974E35A2F58EA5500A468C0 /* Clicky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clicky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3692F58EA5600A468C0 /* ClickyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3732F58EA5600A468C0 /* ClickyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +61,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		29712F952F6203CB0056704D /* Exceptions for "Clicky" folder in "ClickyWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Counter.swift,
+				Utils/Extensions.swift,
+			);
+			target = 29E264352F5DDA190049F201 /* ClickyWidgetExtension */;
+		};
 		29E2644D2F5DDA1A0049F201 /* Exceptions for "ClickyWidget" folder in "ClickyWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -72,6 +81,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2974E35C2F58EA5500A468C0 /* Clicky */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				29712F952F6203CB0056704D /* Exceptions for "Clicky" folder in "ClickyWidgetExtension" target */,
+			);
 			path = Clicky;
 			sourceTree = "<group>";
 		};
@@ -132,6 +144,7 @@
 		2974E3512F58EA5500A468C0 = {
 			isa = PBXGroup;
 			children = (
+				29712F972F62044C0056704D /* ClickyWidgetExtension.entitlements */,
 				2974E35C2F58EA5500A468C0 /* Clicky */,
 				2974E36C2F58EA5600A468C0 /* ClickyTests */,
 				2974E3762F58EA5600A468C0 /* ClickyUITests */,
@@ -512,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clicky/Clicky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4HM8AA4867;
@@ -558,6 +572,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clicky/Clicky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4HM8AA4867;
@@ -704,6 +719,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ClickyWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4HM8AA4867;
@@ -736,6 +752,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ClickyWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4HM8AA4867;
