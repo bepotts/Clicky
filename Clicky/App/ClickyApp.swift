@@ -10,7 +10,6 @@ import SwiftUI
 
 @main
 struct ClickyApp: App {
-
     var body: some Scene {
         WindowGroup {
             CounterListView()

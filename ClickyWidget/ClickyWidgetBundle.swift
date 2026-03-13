@@ -5,8 +5,8 @@
 //  Created by Brandon Potts on 3/8/26.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 @main
 struct ClickyWidgetBundle: WidgetBundle {

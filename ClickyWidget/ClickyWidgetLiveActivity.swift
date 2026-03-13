@@ -7,20 +7,9 @@
 
 import ActivityKit
 import AppIntents
+import SwiftData
 import SwiftUI
 import WidgetKit
-import SwiftData
-
-struct ClickyWidgetAttributes: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var count: Int
-    }
-
-    // Fixed non-changing properties about your activity go here!
-    var title: String
-    var id: UUID
-}
 
 struct ClickyWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
@@ -80,15 +69,15 @@ extension ClickyWidgetAttributes {
 extension ClickyWidgetAttributes.ContentState {
     fileprivate static var smiley: ClickyWidgetAttributes.ContentState {
         ClickyWidgetAttributes.ContentState(count: 0)
-     }
-     
-     fileprivate static var starEyes: ClickyWidgetAttributes.ContentState {
-         ClickyWidgetAttributes.ContentState(count: 42)
-     }
+    }
+
+    fileprivate static var starEyes: ClickyWidgetAttributes.ContentState {
+        ClickyWidgetAttributes.ContentState(count: 42)
+    }
 }
 
 #Preview("Notification", as: .content, using: ClickyWidgetAttributes.preview) {
-   ClickyWidgetLiveActivity()
+    ClickyWidgetLiveActivity()
 } contentStates: {
     ClickyWidgetAttributes.ContentState.smiley
     ClickyWidgetAttributes.ContentState.starEyes

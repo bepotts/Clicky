@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		29AB12262F645E5700432592 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12192F645E5700432592 /* Extensions.swift */; };
 		29AB12312F645E5700432592 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12192F645E5700432592 /* Extensions.swift */; };
+		29AB129A2F648F6000432592 /* ClickyWidgetAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */; };
+		29AB129B2F648F6500432592 /* ClickyWidgetAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */; };
 		29E264392F5DDA190049F201 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E264382F5DDA190049F201 /* WidgetKit.framework */; };
 		29E2643B2F5DDA190049F201 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E2643A2F5DDA190049F201 /* SwiftUI.framework */; };
 		29E2644C2F5DDA1A0049F201 /* ClickyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -58,6 +60,7 @@
 		2974E3692F58EA5600A468C0 /* ClickyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3732F58EA5600A468C0 /* ClickyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AB12192F645E5700432592 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickyWidgetAttributes.swift; sourceTree = "<group>"; };
 		29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClickyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E264382F5DDA190049F201 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		29E2643A2F5DDA190049F201 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,7 @@
 		29AB12552F648A3E00432592 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */,
 				29AB12192F645E5700432592 /* Extensions.swift */,
 				29AB12562F648A7D00432592 /* Models */,
 			);
@@ -367,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AB12262F645E5700432592 /* Extensions.swift in Sources */,
+				29AB129A2F648F6000432592 /* ClickyWidgetAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AB12312F645E5700432592 /* Extensions.swift in Sources */,
+				29AB129B2F648F6500432592 /* ClickyWidgetAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +551,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -592,6 +599,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
