@@ -11,8 +11,6 @@ import SwiftUI
 @main
 struct ClickyWidgetBundle: WidgetBundle {
     var body: some Widget {
-        ClickyWidget()
-        ClickyWidgetControl()
         ClickyWidgetLiveActivity()
     }
 }
