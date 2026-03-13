@@ -17,6 +17,7 @@ struct CounterViewListItem: View {
                 counter.decrement()
             }
             .buttonStyle(.borderless)
+            .accessibilityLabel("Decrement")
             Spacer()
             VStack(alignment: .leading, spacing: 40) {
                 Text(counter.name)
@@ -29,6 +30,7 @@ struct CounterViewListItem: View {
                 counter.increment()
             }
             .buttonStyle(.borderless)
+            .accessibilityLabel("Increment")
         }
     }
 }
