@@ -33,6 +33,7 @@ struct CounterListView: View {
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
                                 modelContext.delete(counter)
+                                try? modelContext.save()
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }

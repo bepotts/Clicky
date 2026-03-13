@@ -17,14 +17,11 @@ extension ModelContainer {
             fatalError("Could not resolve App Group container URL")
         }
         
-        let schema = Schema([
-            Counter.self
-        ])
-
+        let schema = Schema(CounterSchemaV1.models, version: CounterSchemaV1.versionIdentifier)
         let config = ModelConfiguration(schema: schema, url: url)
 
         do {
-            return try ModelContainer(for: schema, configurations: config)
+            return try ModelContainer(for: schema, migrationPlan: CounterMigrationPlan.self, configurations: config)
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
         }

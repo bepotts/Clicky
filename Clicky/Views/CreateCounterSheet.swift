@@ -32,6 +32,7 @@ struct CreateCounterSheet: View {
                 .keyboardType(.numberPad)
             Button("Done") {
                 modelContext.insert(counter)
+                try? modelContext.save()
                 onCreated()
                 dismiss()
             }
