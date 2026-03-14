@@ -8,6 +8,7 @@
 import ActivityKit
 import AppIntents
 import WidgetKit
+import os
 
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Configuration" }
@@ -22,14 +23,19 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 
 struct IncrementCounterIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "Increment counter"
+    
 
     func perform() async throws -> some IntentResult {
+        Logger.liveActivity.trace("Performing increment counter")
         guard let activity = Activity<ClickyWidgetAttributes>.activities.first else {
+            Logger.liveActivity.error("Could not find an active widget activity to update")
             return .result()
         }
+        Logger.liveActivity.trace("Found an activity to update")
         let newCount = activity.content.state.count + 1
         let newState = ClickyWidgetAttributes.ContentState(count: newCount)
         await activity.update(ActivityContent(state: newState, staleDate: nil))
+        Logger.liveActivity.trace("Updated activity")
         return .result()
     }
 }
