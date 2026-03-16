@@ -5,10 +5,13 @@
 //  Created by Brandon Potts on 3/4/26.
 //
 
-import ActivityKit
 import os
 import SwiftData
 import SwiftUI
+
+#if os(iOS)
+import ActivityKit
+#endif
 
 struct CreateCounterSheet: View {
     @Environment(\.modelContext) private var modelContext
@@ -16,7 +19,9 @@ struct CreateCounterSheet: View {
     @Bindable var counter: Counter
     let onCreated: () -> Void
 
+    #if os(iOS)
     @State private var liveView = false
+    #endif
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -28,16 +33,23 @@ struct CreateCounterSheet: View {
                 .frame(maxWidth: .infinity)
             TextField("Increment By", value: $counter.incrementBy, format: .number)
                 .textFieldStyle(.roundedBorder)
+            #if os(iOS)
                 .keyboardType(.numberPad)
+            #endif
             Text("Starting Count")
                 .frame(maxWidth: .infinity)
             TextField("Starting Count", value: $counter.count, format: .number)
                 .textFieldStyle(.roundedBorder)
+            #if os(iOS)
                 .keyboardType(.numberPad)
+            #endif
+            #if os(iOS)
             Toggle("Live View", isOn: $liveView)
+            #endif
             Button("Done") {
                 modelContext.insert(counter)
                 try? modelContext.save()
+                #if os(iOS)
                 if liveView {
                     Logger.liveActivity.info(
                         "Starting live activity for counter '\(counter.name)' with id \(counter.id.uuidString)"
@@ -61,6 +73,7 @@ struct CreateCounterSheet: View {
                         Logger.liveActivity.error("Failed to start live activity: \(error.localizedDescription)")
                     }
                 }
+                #endif
                 onCreated()
                 dismiss()
             }

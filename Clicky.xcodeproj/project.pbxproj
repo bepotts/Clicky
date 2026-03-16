@@ -19,7 +19,7 @@
 		29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131B2F685CF100432592 /* .swiftlint.yml */; };
 		29E264392F5DDA190049F201 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E264382F5DDA190049F201 /* WidgetKit.framework */; };
 		29E2643B2F5DDA190049F201 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E2643A2F5DDA190049F201 /* SwiftUI.framework */; };
-		29E2644C2F5DDA1A0049F201 /* ClickyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		29E2644C2F5DDA1A0049F201 /* ClickyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -433,6 +433,7 @@
 		};
 		29E2644B2F5DDA1A0049F201 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 29E264352F5DDA190049F201 /* ClickyWidgetExtension */;
 			targetProxy = 29E2644A2F5DDA1A0049F201 /* PBXContainerItemProxy */;
 		};

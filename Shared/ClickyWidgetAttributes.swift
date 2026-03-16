@@ -4,9 +4,9 @@
 //
 //
 
+#if os(iOS)
 import ActivityKit
 import Foundation
-
 struct ClickyWidgetAttributes: ActivityAttributes {
     struct ContentState: Codable, Hashable {
         var count: Int
@@ -15,3 +15,4 @@ struct ClickyWidgetAttributes: ActivityAttributes {
     var title: String
     var id: UUID
 }
+#endif

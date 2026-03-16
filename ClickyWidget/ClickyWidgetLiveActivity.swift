@@ -5,6 +5,7 @@
 //  Created by Brandon Potts on 3/8/26.
 //
 
+#if os(iOS)
 import ActivityKit
 import AppIntents
 import SwiftData
@@ -82,3 +83,5 @@ private extension ClickyWidgetAttributes.ContentState {
     ClickyWidgetAttributes.ContentState.smiley
     ClickyWidgetAttributes.ContentState.starEyes
 }
+
+#endif

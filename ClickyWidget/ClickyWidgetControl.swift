@@ -5,6 +5,7 @@
 //  Created by Brandon Potts on 3/8/26.
 //
 
+#if os(iOS)
 import AppIntents
 import SwiftUI
 import WidgetKit
@@ -75,3 +76,5 @@ struct StartTimerIntent: SetValueIntent {
         .result()
     }
 }
+
+#endif
