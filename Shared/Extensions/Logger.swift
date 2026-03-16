@@ -1,5 +1,5 @@
 //
-//  Logs.swift
+//  Logger.swift
 //  Clicky
 //
 //  Created by Brandon Potts on 3/7/26.
