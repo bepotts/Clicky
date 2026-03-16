@@ -1,0 +1,23 @@
+# Conservative SwiftFormat config for a typical iOS / SwiftUI project
+# Designed to be easy to adopt and low-drama in team settings.
+
+--indent 4
+--linebreaks lf
+--maxwidth 120
+--trimwhitespace always
+--semicolons inline
+--commas inline
+--ranges nospace
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--closingparen balanced
+--callsiteparen balanced
+--stripunusedargs closure-only
+--self remove
+--patternlet hoist
+--ifdef no-indent
+--xcodeindentation enabled
+--header ignore
+--swiftversion 5.10
+--exclude Pods,Carthage,build,.build,DerivedData

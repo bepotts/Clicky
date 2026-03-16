@@ -6,9 +6,9 @@
 //
 
 import ActivityKit
+import os
 import SwiftData
 import SwiftUI
-import os
 
 struct CreateCounterSheet: View {
     @Environment(\.modelContext) private var modelContext
@@ -40,7 +40,7 @@ struct CreateCounterSheet: View {
                 try? modelContext.save()
                 if liveView {
                     Logger.liveActivity.info(
-                        "Starting live activity for counter '\(self.counter.name)' with id \(self.counter.id.uuidString)"
+                        "Starting live activity for counter '\(counter.name)' with id \(counter.id.uuidString)"
                     )
                     let attributes = ClickyWidgetAttributes(title: counter.name, id: counter.id)
                     let content = ActivityContent(

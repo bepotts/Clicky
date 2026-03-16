@@ -42,7 +42,7 @@ extension ClickyWidgetControl {
         }
 
         func currentValue(configuration: TimerConfiguration) async throws -> Value {
-            let isRunning = true  // Check if the timer is running
+            let isRunning = true // Check if the timer is running
             return ClickyWidgetControl.Value(isRunning: isRunning, name: configuration.timerName)
         }
     }
@@ -72,6 +72,6 @@ struct StartTimerIntent: SetValueIntent {
 
     func perform() async throws -> some IntentResult {
         // Start the timer…
-        return .result()
+        .result()
     }
 }

@@ -66,14 +66,14 @@ struct ClickyWidget: Widget {
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
+private extension ConfigurationAppIntent {
+    static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
         intent.favoriteEmoji = "😀"
         return intent
     }
 
-    fileprivate static var starEyes: ConfigurationAppIntent {
+    static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
         intent.favoriteEmoji = "🤩"
         return intent

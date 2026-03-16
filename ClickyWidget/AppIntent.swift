@@ -7,9 +7,9 @@
 
 import ActivityKit
 import AppIntents
+import os
 import SwiftData
 import WidgetKit
-import os
 
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Configuration" }

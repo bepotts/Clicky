@@ -60,18 +60,18 @@ struct ClickyWidgetLiveActivity: Widget {
     }
 }
 
-extension ClickyWidgetAttributes {
-    fileprivate static var preview: ClickyWidgetAttributes {
+private extension ClickyWidgetAttributes {
+    static var preview: ClickyWidgetAttributes {
         ClickyWidgetAttributes(title: "Title", id: UUID())
     }
 }
 
-extension ClickyWidgetAttributes.ContentState {
-    fileprivate static var smiley: ClickyWidgetAttributes.ContentState {
+private extension ClickyWidgetAttributes.ContentState {
+    static var smiley: ClickyWidgetAttributes.ContentState {
         ClickyWidgetAttributes.ContentState(count: 0)
     }
 
-    fileprivate static var starEyes: ClickyWidgetAttributes.ContentState {
+    static var starEyes: ClickyWidgetAttributes.ContentState {
         ClickyWidgetAttributes.ContentState(count: 42)
     }
 }
