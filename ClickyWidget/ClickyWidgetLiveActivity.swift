@@ -8,7 +8,6 @@
 #if os(iOS)
 import ActivityKit
 import AppIntents
-import SwiftData
 import SwiftUI
 import WidgetKit
 
@@ -32,7 +31,6 @@ struct ClickyWidgetLiveActivity: Widget {
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
-            .modelContainer(ModelContainer.shared)
 
         } dynamicIsland: { context in
             DynamicIsland {

@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29AB12262F645E5700432592 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12192F645E5700432592 /* Extensions.swift */; };
-		29AB12312F645E5700432592 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12192F645E5700432592 /* Extensions.swift */; };
 		29AB129A2F648F6000432592 /* ClickyWidgetAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */; };
 		29AB129B2F648F6500432592 /* ClickyWidgetAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */; };
 		29AB12FA2F649B0700432592 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E62F649B0700432592 /* Enums.swift */; };
-		29AB12FB2F649B0700432592 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E72F649B0700432592 /* Logs.swift */; };
-		29AB13182F65A19300432592 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E72F649B0700432592 /* Logs.swift */; };
 		29AB13192F65A19300432592 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E62F649B0700432592 /* Enums.swift */; };
 		29AB131C2F685CF100432592 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131A2F685CF100432592 /* .swiftformat */; };
 		29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131B2F685CF100432592 /* .swiftlint.yml */; };
@@ -65,10 +61,8 @@
 		2974E35A2F58EA5500A468C0 /* Clicky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clicky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3692F58EA5600A468C0 /* ClickyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3732F58EA5600A468C0 /* ClickyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29AB12192F645E5700432592 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickyWidgetAttributes.swift; sourceTree = "<group>"; };
 		29AB12E62F649B0700432592 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		29AB12E72F649B0700432592 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		29AB131A2F685CF100432592 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		29AB131B2F685CF100432592 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClickyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +99,11 @@
 		29AB12562F648A7D00432592 /* Models */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Models;
+			sourceTree = "<group>";
+		};
+		29AB143F2F688D2300432592 /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		29E2643C2F5DDA190049F201 /* ClickyWidget */ = {
@@ -181,10 +180,9 @@
 		29AB12552F648A3E00432592 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				29AB143F2F688D2300432592 /* Extensions */,
 				29AB12E62F649B0700432592 /* Enums.swift */,
-				29AB12E72F649B0700432592 /* Logs.swift */,
 				29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */,
-				29AB12192F645E5700432592 /* Extensions.swift */,
 				29AB12562F648A7D00432592 /* Models */,
 			);
 			path = Shared;
@@ -219,6 +217,7 @@
 			fileSystemSynchronizedGroups = (
 				2974E35C2F58EA5500A468C0 /* Clicky */,
 				29AB12562F648A7D00432592 /* Models */,
+				29AB143F2F688D2300432592 /* Extensions */,
 			);
 			name = Clicky;
 			packageProductDependencies = (
@@ -287,6 +286,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				29AB12562F648A7D00432592 /* Models */,
+				29AB143F2F688D2300432592 /* Extensions */,
 				29E2643C2F5DDA190049F201 /* ClickyWidget */,
 			);
 			name = ClickyWidgetExtension;
@@ -387,8 +387,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AB12FA2F649B0700432592 /* Enums.swift in Sources */,
-				29AB12FB2F649B0700432592 /* Logs.swift in Sources */,
-				29AB12262F645E5700432592 /* Extensions.swift in Sources */,
 				29AB129A2F648F6000432592 /* ClickyWidgetAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,8 +409,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29AB12312F645E5700432592 /* Extensions.swift in Sources */,
-				29AB13182F65A19300432592 /* Logs.swift in Sources */,
 				29AB13192F65A19300432592 /* Enums.swift in Sources */,
 				29AB129B2F648F6500432592 /* ClickyWidgetAttributes.swift in Sources */,
 			);
@@ -767,6 +763,7 @@
 				INFOPLIST_FILE = ClickyWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ClickyWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -800,6 +797,7 @@
 				INFOPLIST_FILE = ClickyWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ClickyWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
