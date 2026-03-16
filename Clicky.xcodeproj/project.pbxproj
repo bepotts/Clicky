@@ -15,6 +15,8 @@
 		29AB12FB2F649B0700432592 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E72F649B0700432592 /* Logs.swift */; };
 		29AB13182F65A19300432592 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E72F649B0700432592 /* Logs.swift */; };
 		29AB13192F65A19300432592 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E62F649B0700432592 /* Enums.swift */; };
+		29AB131C2F685CF100432592 /* .swift-format in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131A2F685CF100432592 /* .swift-format */; };
+		29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131B2F685CF100432592 /* .swiftlint.yml */; };
 		29E264392F5DDA190049F201 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E264382F5DDA190049F201 /* WidgetKit.framework */; };
 		29E2643B2F5DDA190049F201 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E2643A2F5DDA190049F201 /* SwiftUI.framework */; };
 		29E2644C2F5DDA1A0049F201 /* ClickyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -67,6 +69,8 @@
 		29AB12992F648F6000432592 /* ClickyWidgetAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickyWidgetAttributes.swift; sourceTree = "<group>"; };
 		29AB12E62F649B0700432592 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		29AB12E72F649B0700432592 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		29AB131A2F685CF100432592 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
+		29AB131B2F685CF100432592 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClickyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E264382F5DDA190049F201 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		29E2643A2F5DDA190049F201 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -150,6 +154,8 @@
 		2974E3512F58EA5500A468C0 = {
 			isa = PBXGroup;
 			children = (
+				29AB131A2F685CF100432592 /* .swift-format */,
+				29AB131B2F685CF100432592 /* .swiftlint.yml */,
 				29AB12552F648A3E00432592 /* Shared */,
 				29712F972F62044C0056704D /* ClickyWidgetExtension.entitlements */,
 				2974E35C2F58EA5500A468C0 /* Clicky */,
@@ -347,6 +353,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29AB131C2F685CF100432592 /* .swift-format in Resources */,
+				29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
