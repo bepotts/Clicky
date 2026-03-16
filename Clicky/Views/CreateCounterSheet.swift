@@ -21,6 +21,7 @@ struct CreateCounterSheet: View {
 
     #if os(iOS)
     @State private var liveView = false
+    @State private var areActivitiesEnabled = ActivityAuthorizationInfo().areActivitiesEnabled
     #endif
 
     var body: some View {
@@ -44,13 +45,15 @@ struct CreateCounterSheet: View {
                 .keyboardType(.numberPad)
             #endif
             #if os(iOS)
-            Toggle("Live View", isOn: $liveView)
+            if areActivitiesEnabled {
+                Toggle("Live View", isOn: $liveView)
+            }
             #endif
             Button("Done") {
                 modelContext.insert(counter)
                 try? modelContext.save()
                 #if os(iOS)
-                if liveView {
+                if liveView && areActivitiesEnabled {
                     Logger.liveActivity.info(
                         "Starting live activity for counter '\(counter.name)' with id \(counter.id.uuidString)"
                     )
