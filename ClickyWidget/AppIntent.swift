@@ -8,8 +8,7 @@
 #if os(iOS)
 import ActivityKit
 import AppIntents
-import os
-import SwiftData
+import OSLog
 import WidgetKit
 
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
@@ -32,18 +31,10 @@ struct IncrementCounterIntent: LiveActivityIntent {
             Logger.liveActivity.error("Could not find an active widget activity to update")
             return .result()
         }
-        let counterID = activity.attributes.id
-        let context = ModelContext(ModelContainer.shared)
-        let descriptor = FetchDescriptor<Counter>(predicate: #Predicate { $0.id == counterID })
-        guard let counter = try context.fetch(descriptor).first else {
-            Logger.liveActivity.error("Could not find counter with id \(counterID.uuidString) in SwiftData")
-            return .result()
-        }
-        counter.increment()
-        try context.save()
-        let newState = ClickyWidgetAttributes.ContentState(count: counter.count)
+        let count = activity.content.state.count
+        let newState = ClickyWidgetAttributes.ContentState(count: count + 1)
         await activity.update(ActivityContent(state: newState, staleDate: nil))
-        Logger.liveActivity.trace("Incremented counter to \(counter.count)")
+        Logger.liveActivity.trace("Incremented counter to \(newState.count)")
         return .result()
     }
 }
@@ -57,18 +48,10 @@ struct DecrementCounterIntent: LiveActivityIntent {
             Logger.liveActivity.error("Could not find an active widget activity to update")
             return .result()
         }
-        let counterID = activity.attributes.id
-        let context = ModelContext(ModelContainer.shared)
-        let descriptor = FetchDescriptor<Counter>(predicate: #Predicate { $0.id == counterID })
-        guard let counter = try context.fetch(descriptor).first else {
-            Logger.liveActivity.error("Could not find counter with id \(counterID.uuidString) in SwiftData")
-            return .result()
-        }
-        counter.decrement()
-        try context.save()
-        let newState = ClickyWidgetAttributes.ContentState(count: counter.count)
+        let count = activity.content.state.count
+        let newState = ClickyWidgetAttributes.ContentState(count: max(0, count - 1))
         await activity.update(ActivityContent(state: newState, staleDate: nil))
-        Logger.liveActivity.trace("Decremented counter to \(counter.count)")
+        Logger.liveActivity.trace("Decremented counter to \(newState.count)")
         return .result()
     }
 }

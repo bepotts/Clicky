@@ -5,7 +5,7 @@
 //  Created by Brandon Potts on 3/4/26.
 //
 
-import os
+import OSLog
 import SwiftData
 import SwiftUI
 
