@@ -27,9 +27,6 @@ final class Counter {
     }
 
     func decrement() {
-        count -= incrementBy
-        if count < 0 {
-            count = 0
-        }
+        count = max(0, count - incrementBy)
     }
 }
