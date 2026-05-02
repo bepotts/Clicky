@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29AB12FA2F649B0700432592 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E62F649B0700432592 /* Enums.swift */; };
-		29AB13192F65A19300432592 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB12E62F649B0700432592 /* Enums.swift */; };
 		29AB131C2F685CF100432592 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131A2F685CF100432592 /* .swiftformat */; };
 		29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131B2F685CF100432592 /* .swiftlint.yml */; };
 		29E264392F5DDA190049F201 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E264382F5DDA190049F201 /* WidgetKit.framework */; };
@@ -59,7 +57,6 @@
 		2974E35A2F58EA5500A468C0 /* Clicky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clicky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3692F58EA5600A468C0 /* ClickyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3732F58EA5600A468C0 /* ClickyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29AB12E62F649B0700432592 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		29AB131A2F685CF100432592 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		29AB131B2F685CF100432592 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClickyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,14 +65,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		29433BAD2FA6AFC500C6BADA /* Exceptions for "LiveActivities" folder in "Clicky" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ClickyWidgetLiveActivity.swift,
-				CounterIntents.swift,
-			);
-			target = 2974E3592F58EA5500A468C0 /* Clicky */;
-		};
 		29433BAE2FA6AFFC00C6BADA /* Exceptions for "Clicky" folder in "Clicky" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -95,12 +84,9 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		29433BAC2FA6AFB800C6BADA /* LiveActivities */ = {
+		29433BB92FA6BCA900C6BADA /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				29433BAD2FA6AFC500C6BADA /* Exceptions for "LiveActivities" folder in "Clicky" target */,
-			);
-			path = LiveActivities;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		2974E35C2F58EA5500A468C0 /* Clicky */ = {
@@ -119,16 +105,6 @@
 		2974E3762F58EA5600A468C0 /* ClickyUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ClickyUITests;
-			sourceTree = "<group>";
-		};
-		29AB12562F648A7D00432592 /* Models */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Models;
-			sourceTree = "<group>";
-		};
-		29AB143F2F688D2300432592 /* Extensions */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		29E2643C2F5DDA190049F201 /* ClickyWidget */ = {
@@ -180,7 +156,7 @@
 			children = (
 				29AB131A2F685CF100432592 /* .swiftformat */,
 				29AB131B2F685CF100432592 /* .swiftlint.yml */,
-				29AB12552F648A3E00432592 /* Shared */,
+				29433BB92FA6BCA900C6BADA /* Shared */,
 				29712F972F62044C0056704D /* ClickyWidgetExtension.entitlements */,
 				2974E35C2F58EA5500A468C0 /* Clicky */,
 				2974E36C2F58EA5600A468C0 /* ClickyTests */,
@@ -200,17 +176,6 @@
 				29E264362F5DDA190049F201 /* ClickyWidgetExtension.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		29AB12552F648A3E00432592 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				29433BAC2FA6AFB800C6BADA /* LiveActivities */,
-				29AB143F2F688D2300432592 /* Extensions */,
-				29AB12E62F649B0700432592 /* Enums.swift */,
-				29AB12562F648A7D00432592 /* Models */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		29E264372F5DDA190049F201 /* Frameworks */ = {
@@ -240,10 +205,8 @@
 				29E2644B2F5DDA1A0049F201 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				29433BAC2FA6AFB800C6BADA /* LiveActivities */,
+				29433BB92FA6BCA900C6BADA /* Shared */,
 				2974E35C2F58EA5500A468C0 /* Clicky */,
-				29AB12562F648A7D00432592 /* Models */,
-				29AB143F2F688D2300432592 /* Extensions */,
 			);
 			name = Clicky;
 			packageProductDependencies = (
@@ -311,9 +274,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				29433BAC2FA6AFB800C6BADA /* LiveActivities */,
-				29AB12562F648A7D00432592 /* Models */,
-				29AB143F2F688D2300432592 /* Extensions */,
+				29433BB92FA6BCA900C6BADA /* Shared */,
 				29E2643C2F5DDA190049F201 /* ClickyWidget */,
 			);
 			name = ClickyWidgetExtension;
@@ -413,7 +374,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29AB12FA2F649B0700432592 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +395,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29AB13192F65A19300432592 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

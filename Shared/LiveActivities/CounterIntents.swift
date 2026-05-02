@@ -10,6 +10,18 @@ import ActivityKit
 import AppIntents
 import OSLog
 
+struct ClickyWidgetAttributes: ActivityAttributes {
+    struct ContentState: Codable, Hashable {
+        var count: Int
+    }
+
+    var title: LocalizedStringResource
+    var id: UUID
+}
+
+
+// MARK: Activity Intents
+
 struct IncrementCounterIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "Increment counter"
 
@@ -19,11 +31,6 @@ struct IncrementCounterIntent: LiveActivityIntent {
             let newState = ClickyWidgetAttributes.ContentState(count: activity.content.state.count + 1)
             await activity.update(ActivityContent(state: newState, staleDate: nil))
         }
-//        guard let activity = Activity<ClickyWidgetAttributes>.activities.first else {
-//            Logger.liveActivity.error("Could not find an active widget activity to update")
-//            return .result()
-//        }
-//        Logger.liveActivity.trace("Incremented counter to \(newState.count)")
         return .result()
     }
 }
@@ -33,15 +40,10 @@ struct DecrementCounterIntent: LiveActivityIntent {
 
     func perform() async throws -> some IntentResult {
         Logger.liveActivity.info("Performing decrement counter")
-//        guard let activity = Activity<ClickyWidgetAttributes>.activities.first else {
-//            Logger.liveActivity.error("Could not find an active widget activity to update")
-//            return .result()
-//        }
         for activity in Activity<ClickyWidgetAttributes>.activities {
             let newState = ClickyWidgetAttributes.ContentState(count: max(0, activity.content.state.count - 1))
             await activity.update(ActivityContent(state: newState, staleDate: nil))
         }
-//        Logger.liveActivity.trace("Decremented counter to \(newState.count)")
         return .result()
     }
 }
