@@ -30,18 +30,6 @@ private struct ClickyLiveActivityLockScreenContent: View {
     let counterId: String
     let contentState: ClickyWidgetAttributes.ContentState
 
-    private var decrementIntent: DecrementCounterIntent {
-        let intent = DecrementCounterIntent()
-        intent.counterId = counterId
-        return intent
-    }
-
-    private var incrementIntent: IncrementCounterIntent {
-        let intent = IncrementCounterIntent()
-        intent.counterId = counterId
-        return intent
-    }
-
     var body: some View {
         VStack {
             Text(LocalizedStringResource(stringLiteral: title))
@@ -59,6 +47,18 @@ private struct ClickyLiveActivityLockScreenContent: View {
         }
         .activityBackgroundTint(Color.cyan)
         .activitySystemActionForegroundColor(Color.black)
+    }
+
+    private var decrementIntent: DecrementCounterIntent {
+        let intent = DecrementCounterIntent()
+        intent.counterId = counterId
+        return intent
+    }
+
+    private var incrementIntent: IncrementCounterIntent {
+        let intent = IncrementCounterIntent()
+        intent.counterId = counterId
+        return intent
     }
 }
 
