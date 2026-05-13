@@ -17,7 +17,6 @@ struct CreateCounterSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Bindable var counter: Counter
-    let onCreated: () -> Void
 
     #if os(iOS)
     @State private var liveView = false
@@ -94,7 +93,6 @@ struct CreateCounterSheet: View {
             }
         }
         #endif
-        onCreated()
         dismiss()
     }
 }

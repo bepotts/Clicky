@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CounterViewListItem: View {
     @Bindable var counter: Counter
+    var onLongPress: () -> Void
 
     var body: some View {
         HStack {
@@ -32,9 +33,10 @@ struct CounterViewListItem: View {
             .buttonStyle(.borderless)
             .accessibilityLabel("Increment")
         }
+        .onLongPressGesture(perform: onLongPress)
     }
 }
 
 #Preview {
-    CounterViewListItem(counter: Counter(count: 42, name: "Sample"))
+    CounterViewListItem(counter: Counter(count: 42, name: "Sample"), onLongPress: {})
 }

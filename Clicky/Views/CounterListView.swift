@@ -26,9 +26,9 @@ struct CounterListView: View {
                 } else {
                     List(counters) { counter in
                         Button {
-                            selectedCounter = counter
+                            // TODO: Navigate to CounterView
                         } label: {
-                            CounterViewListItem(counter: counter)
+                            CounterViewListItem(counter: counter, onLongPress: { editCounter(counter) })
                         }
                         .buttonStyle(.plain)
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -49,16 +49,17 @@ struct CounterListView: View {
                 }
             }
             .sheet(item: $selectedCounter) { counter in
-                CreateCounterSheet(counter: counter, onCreated: handleCounterCreated)
+                CreateCounterSheet(counter: counter)
                     .presentationDetents([.medium])
             }
         }
     }
 
-    private func handleCounterCreated() {
-        // navigateToCounterView = true TODO: Change this once I decide how to handle the navigation
+    private func editCounter(_ counter: Counter) {
+        Logger.views.info("Editing counter: \(counter.id)")
+        selectedCounter = counter
     }
-
+    
     private func deleteCounter(_ counter: Counter) {
         do {
             try CounterStore(context: modelContext).delete(counter)
