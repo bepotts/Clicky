@@ -5,6 +5,7 @@
 //  Created by Brandon Potts on 3/4/26.
 //
 
+import FirebaseCore
 import SwiftData
 import SwiftUI
 
@@ -20,6 +21,9 @@ struct ClickyApp: App {
         return elapsed >= landingInterval
     }
 
+    init() {
+        configureFirebase()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -32,5 +36,18 @@ struct ClickyApp: App {
             }
         }
         .modelContainer(ModelContainer.shared)
+    }
+
+    private func configureFirebase() {
+        guard FirebaseApp.app() == nil else { return }
+
+        if let optionsPath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
+           let options = FirebaseOptions(contentsOfFile: optionsPath) {
+            FirebaseApp.configure(options: options)
+        } else {
+            #if DEBUG
+            print("Firebase is not configured. Add GoogleService-Info.plist to the Clicky target.")
+            #endif
+        }
     }
 }
