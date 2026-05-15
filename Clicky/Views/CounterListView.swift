@@ -13,6 +13,7 @@ struct CounterListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var counters: [Counter]
     @State private var selectedCounter: Counter?
+    @State private var isShowingDeleteAllConfirmation = false
 
     var body: some View {
         NavigationStack {
@@ -42,7 +43,12 @@ struct CounterListView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                ToolbarItemGroup(placement: .primaryAction) {
+                    Button("Delete All Counters", systemImage: "trash", role: .destructive) {
+                        isShowingDeleteAllConfirmation = true
+                    }
+                    .disabled(counters.isEmpty)
+
                     Button("Add Counter", systemImage: "plus") {
                         selectedCounter = Counter()
                     }
@@ -51,6 +57,15 @@ struct CounterListView: View {
             .sheet(item: $selectedCounter) { counter in
                 CreateCounterSheet(counter: counter)
                     .presentationDetents([.medium])
+            }
+            .alert("Delete All Counters?", isPresented: $isShowingDeleteAllConfirmation) {
+                Button("Delete All", role: .destructive) {
+                    deleteAllCounters()
+                }
+
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This will permanently delete every counter.")
             }
         }
     }
@@ -67,8 +82,50 @@ struct CounterListView: View {
             Logger.storage.error("Failed to delete counter: \(error)")
         }
     }
+
+    private func deleteAllCounters() {
+        do {
+            try CounterStore(context: modelContext).deleteAll(counters)
+        } catch {
+            Logger.storage.error("Failed to delete all counters: \(error)")
+        }
+    }
 }
 
-#Preview {
+// MARK: - Previews
+
+#Preview("Empty") {
     CounterListView()
+        .modelContainer(CounterListPreviewData.emptyContainer)
+}
+
+#Preview("Three Counters") {
+    CounterListView()
+        .modelContainer(CounterListPreviewData.populatedContainer)
+}
+
+@MainActor
+private enum CounterListPreviewData {
+    static var emptyContainer: ModelContainer {
+        makeContainer()
+    }
+
+    static var populatedContainer: ModelContainer {
+        makeContainer(counters: [
+            Counter(count: 12, name: "Push-ups", incrementBy: 1),
+            Counter(count: 4, name: "Water", incrementBy: 1),
+            Counter(count: 28, name: "Pages", incrementBy: 5)
+        ])
+    }
+
+    private static func makeContainer(counters: [Counter] = []) -> ModelContainer {
+        do {
+            let config = ModelConfiguration(isStoredInMemoryOnly: true)
+            let container = try ModelContainer(for: Counter.self, configurations: config)
+            counters.forEach { container.mainContext.insert($0) }
+            return container
+        } catch {
+            fatalError("Failed to create preview container: \(error)")
+        }
+    }
 }

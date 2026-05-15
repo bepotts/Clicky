@@ -39,6 +39,11 @@ struct CounterStore {
         try context.save()
     }
 
+    func deleteAll(_ counters: [Counter]) throws {
+        counters.forEach(context.delete)
+        try context.save()
+    }
+
     /// Fetches the counter with the given id, applies the operation, saves, and returns the updated counter.
     /// - Throws: `CounterStoreError.counterNotFound` if no counter with the given id exists,
     ///   plus any error thrown by the underlying `ModelContext` fetch/save.
