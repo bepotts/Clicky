@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29741E682FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
+		29741E692FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
+		29741E6A2FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
+		29741E6B2FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
+		29741E6D2FB7DF230055CE2A /* GoogleService-Info.template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E6C2FB7DF230055CE2A /* GoogleService-Info.template.plist */; };
 		2993319A2FB7CF2200A00859 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 299331992FB7CF2200A00859 /* FirebaseAnalytics */; };
 		2993319C2FB7CF2200A00859 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2993319B2FB7CF2200A00859 /* FirebaseCrashlytics */; };
 		29AB131C2F685CF100432592 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131A2F685CF100432592 /* .swiftformat */; };
@@ -56,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		29712F972F62044C0056704D /* IncrementWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IncrementWidgetExtension.entitlements; sourceTree = "<group>"; };
+		29741E672FB7DE400055CE2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		29741E6C2FB7DF230055CE2A /* GoogleService-Info.template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.template.plist"; sourceTree = "<group>"; };
 		2974E35A2F58EA5500A468C0 /* Increment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Increment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3692F58EA5600A468C0 /* IncrementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncrementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2974E3732F58EA5600A468C0 /* IncrementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncrementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +163,8 @@
 		2974E3512F58EA5500A468C0 = {
 			isa = PBXGroup;
 			children = (
+				29741E672FB7DE400055CE2A /* GoogleService-Info.plist */,
+				29741E6C2FB7DF230055CE2A /* GoogleService-Info.template.plist */,
 				29AB131A2F685CF100432592 /* .swiftformat */,
 				29AB131B2F685CF100432592 /* .swiftlint.yml */,
 				29433BB92FA6BCA900C6BADA /* Shared */,
@@ -347,8 +356,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29741E6D2FB7DF230055CE2A /* GoogleService-Info.template.plist in Resources */,
 				29AB131C2F685CF100432592 /* .swiftformat in Resources */,
 				29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */,
+				29741E682FB7DE400055CE2A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29741E6B2FB7DE400055CE2A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29741E692FB7DE400055CE2A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29741E6A2FB7DE400055CE2A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +605,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Increment/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -641,6 +656,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Increment/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
