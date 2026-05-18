@@ -5,6 +5,7 @@
 //  Created by Brandon Potts on 3/4/26.
 //
 
+import FirebaseAnalytics
 import OSLog
 import SwiftData
 import SwiftUI
@@ -65,6 +66,11 @@ struct CreateCounterSheet: View {
     private func handleDone() {
         do {
             try CounterStore(context: modelContext).insert(counter)
+            Analytics.logEvent("counter_created", parameters: [
+                "count": counter.count,
+                "name": counter.name,
+                "incrementBy": counter.incrementBy
+            ])
         } catch {
             Logger.storage.error("Failed to save counter: \(error)")
             errorMessage = error.localizedDescription
@@ -86,6 +92,7 @@ struct CreateCounterSheet: View {
                     content: content
                 )
                 Logger.liveActivity.info("Started live activity: \(activity.id)")
+                Analytics.logEvent("live_activity_started", parameters: nil)
             } catch {
                 Logger.liveActivity.error("Failed to start live activity: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription

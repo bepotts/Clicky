@@ -14,6 +14,7 @@
 		29741E6D2FB7DF230055CE2A /* GoogleService-Info.template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E6C2FB7DF230055CE2A /* GoogleService-Info.template.plist */; };
 		2993319A2FB7CF2200A00859 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 299331992FB7CF2200A00859 /* FirebaseAnalytics */; };
 		2993319C2FB7CF2200A00859 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2993319B2FB7CF2200A00859 /* FirebaseCrashlytics */; };
+		2993319F2FB8C6F400A00859 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2993319E2FB8C6F400A00859 /* FirebaseAnalytics */; };
 		29AB131C2F685CF100432592 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131A2F685CF100432592 /* .swiftformat */; };
 		29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29AB131B2F685CF100432592 /* .swiftlint.yml */; };
 		29E264392F5DDA190049F201 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E264382F5DDA190049F201 /* WidgetKit.framework */; };
@@ -81,6 +82,20 @@
 			);
 			target = 2974E3592F58EA5500A468C0 /* Increment */;
 		};
+		29741F1A2FB8B44F0055CE2A /* Exceptions for "Shared" folder in "IncrementTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Protocols/AnalyticsClient.swift,
+			);
+			target = 2974E3682F58EA5600A468C0 /* IncrementTests */;
+		};
+		29741F1B2FB8B44F0055CE2A /* Exceptions for "Shared" folder in "IncrementUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Protocols/AnalyticsClient.swift,
+			);
+			target = 2974E3722F58EA5600A468C0 /* IncrementUITests */;
+		};
 		29E2644D2F5DDA1A0049F201 /* Exceptions for "IncrementWidget" folder in "IncrementWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -93,6 +108,10 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		29433BB92FA6BCA900C6BADA /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				29741F1A2FB8B44F0055CE2A /* Exceptions for "Shared" folder in "IncrementTests" target */,
+				29741F1B2FB8B44F0055CE2A /* Exceptions for "Shared" folder in "IncrementUITests" target */,
+			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -152,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2993319F2FB8C6F400A00859 /* FirebaseAnalytics in Frameworks */,
 				29E2643B2F5DDA190049F201 /* SwiftUI.framework in Frameworks */,
 				29E264392F5DDA190049F201 /* WidgetKit.framework in Frameworks */,
 			);
@@ -293,6 +313,7 @@
 			);
 			name = IncrementWidgetExtension;
 			packageProductDependencies = (
+				2993319E2FB8C6F400A00859 /* FirebaseAnalytics */,
 			);
 			productName = IncrementWidgetExtension;
 			productReference = 29E264362F5DDA190049F201 /* IncrementWidgetExtension.appex */;
@@ -951,6 +972,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 299331982FB7CF2200A00859 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		2993319E2FB8C6F400A00859 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 299331982FB7CF2200A00859 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

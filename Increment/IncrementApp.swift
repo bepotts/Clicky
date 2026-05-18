@@ -9,6 +9,8 @@ import FirebaseCore
 import SwiftData
 import SwiftUI
 
+/// App entry point that configures Firebase, attaches the shared SwiftData
+/// container, and routes between the landing page and the counter list.
 @main
 struct IncrementApp: App {
 

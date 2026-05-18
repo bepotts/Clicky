@@ -8,6 +8,7 @@
 #if os(iOS)
 import ActivityKit
 import AppIntents
+import FirebaseAnalytics
 import OSLog
 import SwiftData
 
@@ -97,6 +98,7 @@ struct IncrementCounterIntent: LiveActivityIntent {
         }
         Logger.liveActivity.info("Performing increment counter for id: \(counterId)")
         try await performCountOperation(.increment, for: uuid)
+        Analytics.logEvent("increment_from_live_activity", parameters: nil)
         return .result()
     }
 }
@@ -121,6 +123,7 @@ struct DecrementCounterIntent: LiveActivityIntent {
         }
         Logger.liveActivity.info("Performing decrement counter for id: \(counterId)")
         try await performCountOperation(.decrement, for: uuid)
+        Analytics.logEvent("decrement_from_live_activity", parameters: nil)
         return .result()
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Brandon Potts on 3/7/26.
 //
 
+import Firebase
 import OSLog
 import SwiftData
 import SwiftUI
@@ -37,6 +38,7 @@ struct CounterViewListItem: View {
     private func increment() async {
         do {
             try await CounterStore(context: modelContext).updateLiveActivity(for: counter.id, operation: .increment)
+            Analytics.logEvent("increment_from_app", parameters: nil)
         } catch {
             Logger.storage.error("Failed to increment counter: \(error)")
         }
@@ -45,6 +47,7 @@ struct CounterViewListItem: View {
     private func decrement() async {
         do {
             try await CounterStore(context: modelContext).updateLiveActivity(for: counter.id, operation: .decrement)
+            Analytics.logEvent("decrement_from_app", parameters: nil)
         } catch {
             Logger.storage.error("Failed to decrement counter: \(error)")
         }

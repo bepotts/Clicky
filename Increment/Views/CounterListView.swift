@@ -5,6 +5,7 @@
 //  Created by Brandon Potts on 3/4/26.
 //
 
+import FirebaseAnalytics
 import OSLog
 import SwiftData
 import SwiftUI
@@ -78,6 +79,7 @@ struct CounterListView: View {
     private func deleteCounter(_ counter: Counter) {
         do {
             try CounterStore(context: modelContext).delete(counter)
+            Analytics.logEvent("delete_counter", parameters: nil)
         } catch {
             Logger.storage.error("Failed to delete counter: \(error)")
         }
@@ -86,6 +88,7 @@ struct CounterListView: View {
     private func deleteAllCounters() {
         do {
             try CounterStore(context: modelContext).deleteAll(counters)
+            Analytics.logEvent("delete_all_counters", parameters: nil)
         } catch {
             Logger.storage.error("Failed to delete all counters: \(error)")
         }
