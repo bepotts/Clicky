@@ -1,5 +1,5 @@
 # Conservative SwiftFormat config for a typical iOS / SwiftUI project
-# Designed to be easy to adopt and low-drama in team settings.
+# SwiftFormat owns mechanical formatting; SwiftLint owns code-quality checks.
 
 --indent 4
 --linebreaks lf

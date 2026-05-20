@@ -16,6 +16,7 @@ import ActivityKit
 struct CreateCounterSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.analyticsClient) private var analyticsClient
     @Bindable var counter: Counter
 
     #if os(iOS)
@@ -65,13 +66,18 @@ struct CreateCounterSheet: View {
     private func handleDone() {
         do {
             try CounterStore(context: modelContext).insert(counter)
+            analyticsClient.logEvent(.counterCreated, parameters: [
+                "count": counter.count,
+                "name": counter.name,
+                "incrementBy": counter.incrementBy
+            ])
         } catch {
             Logger.storage.error("Failed to save counter: \(error)")
             errorMessage = error.localizedDescription
             return
         }
         #if os(iOS)
-        if liveView && areActivitiesEnabled {
+        if liveView, areActivitiesEnabled {
             Logger.liveActivity.info(
                 "Starting live activity for counter '\(counter.name)' with id \(counter.id.uuidString)"
             )
@@ -86,6 +92,7 @@ struct CreateCounterSheet: View {
                     content: content
                 )
                 Logger.liveActivity.info("Started live activity: \(activity.id)")
+                analyticsClient.logEvent(.liveActivityStarted, parameters: nil)
             } catch {
                 Logger.liveActivity.error("Failed to start live activity: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription
