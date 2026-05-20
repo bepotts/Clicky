@@ -77,7 +77,7 @@ struct CreateCounterSheet: View {
             return
         }
         #if os(iOS)
-        if liveView && areActivitiesEnabled {
+        if liveView, areActivitiesEnabled {
             Logger.liveActivity.info(
                 "Starting live activity for counter '\(counter.name)' with id \(counter.id.uuidString)"
             )

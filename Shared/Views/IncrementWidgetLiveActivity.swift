@@ -20,7 +20,7 @@ struct IncrementWidgetLiveActivity: Widget {
                 contentState: context.state
             )
         } dynamicIsland: { context in
-            IncrementLiveActivityDynamicIslandContent(context: context).island
+            DynamicIslandContent(context: context).island
         }
     }
 }
@@ -62,7 +62,7 @@ private struct IncrementLiveActivityLockScreenContent: View {
     }
 }
 
-private struct IncrementLiveActivityDynamicIslandContent {
+private struct DynamicIslandContent {
     let context: ActivityViewContext<IncrementWidgetAttributes>
 
     var island: DynamicIsland {

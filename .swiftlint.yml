@@ -1,24 +1,37 @@
+# SwiftLint should not fight SwiftFormat.
+# SwiftFormat owns mechanical formatting; SwiftLint owns code-quality checks.
+
 disabled_rules:
+  # Handled by SwiftFormat
   - trailing_whitespace
+  - vertical_whitespace
+  - opening_brace
+  - colon
+  - comma
+  - statement_position
 
 opt_in_rules:
+  # Code-quality / readability rules that do not overlap much with SwiftFormat
   - empty_count
   - empty_string
   - explicit_init
   - force_unwrapping
   - implicit_return
   - redundant_nil_coalescing
-  - sorted_imports
 
 excluded:
   - .build
   - Pods
+  - Carthage
+  - build
   - DerivedData
 
 line_length:
   warning: 120
   error: 150
   ignores_comments: true
+  ignores_urls: true
+  ignores_function_declarations: true
 
 identifier_name:
   min_length:

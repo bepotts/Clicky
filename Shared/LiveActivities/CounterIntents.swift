@@ -17,12 +17,12 @@ nonisolated struct IncrementWidgetAttributes: ActivityAttributes, Sendable {
         /// The current count to display in the Live Activity UI.
         var count: Int
     }
+
     /// Human-readable name of the counter, shown in the Live Activity UI.
     let title: String
     /// Stable identifier of the underlying `Counter` model.
     let id: UUID
 }
-
 
 // MARK: Shared Operation
 

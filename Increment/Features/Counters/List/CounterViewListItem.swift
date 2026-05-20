@@ -18,8 +18,8 @@ struct CounterViewListItem: View {
     var body: some View {
         HStack {
             Button("-") { Task { await decrement() } }
-            .buttonStyle(.borderless)
-            .accessibilityLabel("Decrement")
+                .buttonStyle(.borderless)
+                .accessibilityLabel("Decrement")
             Spacer()
             VStack(alignment: .leading, spacing: 40) {
                 Text(counter.localizedName)
@@ -29,8 +29,8 @@ struct CounterViewListItem: View {
             }
             Spacer()
             Button("+") { Task { await increment() } }
-            .buttonStyle(.borderless)
-            .accessibilityLabel("Increment")
+                .buttonStyle(.borderless)
+                .accessibilityLabel("Increment")
         }
         .onLongPressGesture(perform: onLongPress)
     }

@@ -28,7 +28,7 @@ struct CounterListView: View {
                 } else {
                     List(counters) { counter in
                         Button {
-                            // TODO: Navigate to CounterView
+                            // Intentionally blank
                         } label: {
                             CounterViewListItem(counter: counter, onLongPress: { editCounter(counter) })
                         }
@@ -75,7 +75,7 @@ struct CounterListView: View {
         Logger.views.info("Editing counter: \(counter.id)")
         selectedCounter = counter
     }
-    
+
     private func deleteCounter(_ counter: Counter) {
         do {
             try CounterStore(context: modelContext).delete(counter)
