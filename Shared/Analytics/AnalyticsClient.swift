@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Logs app analytics events through an analytics provider.
-protocol AnalyticsClient {
+protocol AnalyticsClient: Sendable {
     func logEvent(_ event: AppAnalyticsEvent, parameters: [String: Any]?)
 }
 
