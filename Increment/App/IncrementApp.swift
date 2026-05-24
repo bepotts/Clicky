@@ -17,13 +17,18 @@ struct IncrementApp: App {
     // Time interval to show the landing page
     private let landingInterval: TimeInterval = 24 * 60 * 60 // 24 hours in seconds
     private let analyticsClient: any AnalyticsClient = FirebaseAnalyticsClient()
+    private let modelContainer: ModelContainer
 
     private var shouldShowLanding: Bool {
-        let elapsed = Date().timeIntervalSince1970 - lastSeenLanding
-        return elapsed >= landingInterval
+        LandingPresentationPolicy(landingInterval: landingInterval).shouldShowLanding(
+            lastSeenLanding: lastSeenLanding,
+            now: Date(),
+            isUITesting: Self.shouldSkipLandingForUITests
+        )
     }
 
     init() {
+        modelContainer = Self.makeModelContainer()
         configureFirebase()
     }
 
@@ -38,7 +43,7 @@ struct IncrementApp: App {
             }
         }
         .environment(\.analyticsClient, analyticsClient)
-        .modelContainer(ModelContainer.shared)
+        .modelContainer(modelContainer)
     }
 
     private func configureFirebase() {
@@ -53,5 +58,41 @@ struct IncrementApp: App {
             print("Firebase is not configured. Add GoogleService-Info.plist to the Increment target.")
             #endif
         }
+    }
+
+    private static var isUITesting: Bool {
+        CommandLine.arguments.contains("-ui-testing")
+    }
+
+    private static var shouldSkipLandingForUITests: Bool {
+        isUITesting && !CommandLine.arguments.contains("-ui-testing-show-landing")
+    }
+
+    private static func makeModelContainer() -> ModelContainer {
+        guard isUITesting else { return .shared }
+
+        do {
+            let config = ModelConfiguration(isStoredInMemoryOnly: true)
+            let container = try ModelContainer(for: Counter.self, configurations: config)
+            if !CommandLine.arguments.contains("-ui-testing-empty") {
+                container.mainContext.insert(Counter(count: 6, name: "UI Test Counter", incrementBy: 2))
+            }
+            try container.mainContext.save()
+            return container
+        } catch {
+            fatalError("Failed to create UI test ModelContainer: \(error)")
+        }
+    }
+}
+
+/// Determines whether the landing page should be presented for a given launch context.
+struct LandingPresentationPolicy {
+    let landingInterval: TimeInterval
+
+    func shouldShowLanding(lastSeenLanding: Double, now: Date, isUITesting: Bool) -> Bool {
+        guard !isUITesting else { return false }
+
+        let elapsed = now.timeIntervalSince1970 - lastSeenLanding
+        return elapsed >= landingInterval
     }
 }
