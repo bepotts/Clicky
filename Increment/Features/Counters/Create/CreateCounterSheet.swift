@@ -31,10 +31,12 @@ struct CreateCounterSheet: View {
                 .frame(maxWidth: .infinity)
             TextField("Name", text: $counter.name)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("create-counter-name-field")
             Text("Increment By")
                 .frame(maxWidth: .infinity)
             TextField("Increment By", value: $counter.incrementBy, format: .number)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("create-counter-increment-field")
             #if os(iOS)
                 .keyboardType(.numberPad)
             #endif
@@ -42,6 +44,7 @@ struct CreateCounterSheet: View {
                 .frame(maxWidth: .infinity)
             TextField("Starting Count", value: $counter.count, format: .number)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("create-counter-count-field")
             #if os(iOS)
                 .keyboardType(.numberPad)
             #endif
@@ -52,8 +55,10 @@ struct CreateCounterSheet: View {
             #endif
             Button("Done", action: handleDone)
                 .frame(maxWidth: .infinity)
+                .accessibilityIdentifier("create-counter-done-button")
         }
         .padding()
+        .accessibilityIdentifier("create-counter-sheet")
         .alert("Something went wrong", isPresented: .constant(errorMessage != nil)) {
             Button("OK") { errorMessage = nil }
         } message: {

@@ -24,6 +24,11 @@ struct CounterListView: View {
                         Label("No Counters", systemImage: "number.square")
                     } description: {
                         Text("Tap the + button to create your first counter.")
+                    } actions: {
+                        Button("Add Counter", systemImage: "plus") {
+                            selectedCounter = Counter()
+                        }
+                        .accessibilityIdentifier("empty-add-counter-button")
                     }
                 } else {
                     List(counters) { counter in
@@ -48,11 +53,13 @@ struct CounterListView: View {
                     Button("Delete All Counters", systemImage: "trash", role: .destructive) {
                         isShowingDeleteAllConfirmation = true
                     }
+                    .accessibilityIdentifier("delete-all-counters-button")
                     .disabled(counters.isEmpty)
 
                     Button("Add Counter", systemImage: "plus") {
                         selectedCounter = Counter()
                     }
+                    .accessibilityIdentifier("add-counter-button")
                 }
             }
             .sheet(item: $selectedCounter) { counter in

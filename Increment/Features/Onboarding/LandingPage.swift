@@ -18,7 +18,9 @@ struct LandingPage: View {
                 .font(.largeTitle)
                 .bold()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .accessibilityIdentifier("landing-title")
         }
+        .accessibilityIdentifier("landing-page")
         .task {
             try? await Task.sleep(for: .seconds(3))
             onDismiss()

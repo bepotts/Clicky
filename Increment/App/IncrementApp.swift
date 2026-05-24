@@ -23,7 +23,7 @@ struct IncrementApp: App {
         LandingPresentationPolicy(landingInterval: landingInterval).shouldShowLanding(
             lastSeenLanding: lastSeenLanding,
             now: Date(),
-            isUITesting: Self.isUITesting
+            isUITesting: Self.shouldSkipLandingForUITests
         )
     }
 
@@ -64,13 +64,19 @@ struct IncrementApp: App {
         CommandLine.arguments.contains("-ui-testing")
     }
 
+    private static var shouldSkipLandingForUITests: Bool {
+        isUITesting && !CommandLine.arguments.contains("-ui-testing-show-landing")
+    }
+
     private static func makeModelContainer() -> ModelContainer {
         guard isUITesting else { return .shared }
 
         do {
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             let container = try ModelContainer(for: Counter.self, configurations: config)
-            container.mainContext.insert(Counter(count: 6, name: "UI Test Counter", incrementBy: 2))
+            if !CommandLine.arguments.contains("-ui-testing-empty") {
+                container.mainContext.insert(Counter(count: 6, name: "UI Test Counter", incrementBy: 2))
+            }
             try container.mainContext.save()
             return container
         } catch {

@@ -14,6 +14,17 @@ final class IncrementUITests: XCTestCase {
     }
 
     @MainActor
+    func testLaunchShowsSeededCounterList() {
+        let app = launchApp()
+
+        XCTAssertTrue(app.buttons["add-counter-button"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["delete-all-counters-button"].exists)
+        XCTAssertTrue(app.staticTexts["counter-list-item-name-ui-test-counter"].exists)
+        XCTAssertTrue(app.staticTexts["counter-list-item-count-ui-test-counter"].exists)
+        XCTAssertFalse(app.staticTexts["No Counters"].exists)
+    }
+
+    @MainActor
     func testCounterViewListItemIncrementButtonUpdatesCount() {
         let app = launchApp()
         let count = app.staticTexts["counter-list-item-count-ui-test-counter"]
@@ -59,9 +70,60 @@ final class IncrementUITests: XCTestCase {
     }
 
     @MainActor
-    private func launchApp() -> XCUIApplication {
+    func testCreateCounterFromEmptyState() {
+        let app = launchApp(arguments: ["-ui-testing", "-ui-testing-empty"])
+
+        XCTAssertTrue(app.staticTexts["No Counters"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap the + button to create your first counter."].exists)
+
+        app.buttons["empty-add-counter-button"].tap()
+
+        XCTAssertTrue(app.staticTexts["Name of new Counter"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Increment By"].exists)
+        XCTAssertTrue(app.staticTexts["Starting Count"].exists)
+
+        app.textFields["Name"].tap()
+        app.textFields["Name"].typeText("Books")
+        app.buttons["Done"].tap()
+
+        let name = app.staticTexts["counter-list-item-name-books"]
+        let count = app.staticTexts["counter-list-item-count-books"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        XCTAssertEqual(name.label, "Books")
+        XCTAssertEqual(count.label, "0")
+
+        app.buttons["counter-list-item-increment-books"].tap()
+
+        wait(for: count, toHaveLabel: "1")
+    }
+
+    @MainActor
+    func testDeleteAllCountersShowsEmptyState() {
+        let app = launchApp()
+
+        XCTAssertTrue(app.staticTexts["counter-list-item-name-ui-test-counter"].waitForExistence(timeout: 5))
+
+        app.buttons["delete-all-counters-button"].tap()
+        XCTAssertTrue(app.alerts["Delete All Counters?"].waitForExistence(timeout: 2))
+        app.alerts["Delete All Counters?"].buttons["Delete All"].tap()
+
+        XCTAssertTrue(app.staticTexts["No Counters"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["counter-list-item-name-ui-test-counter"].exists)
+    }
+
+    @MainActor
+    func testLandingPageCanBeShownDuringUITests() {
+        let app = launchApp(arguments: ["-ui-testing", "-ui-testing-empty", "-ui-testing-show-landing"])
+
+        XCTAssertTrue(app.staticTexts["Welcome to Increment"].waitForExistence(timeout: 5))
+
+        XCTAssertTrue(app.staticTexts["No Counters"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    private func launchApp(arguments: [String] = ["-ui-testing"]) -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-ui-testing"]
+        app.launchArguments = arguments
         app.launch()
         return app
     }
