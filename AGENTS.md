@@ -28,6 +28,22 @@ Increment is a SwiftUI-based iOS counter application that uses SwiftData for per
 - Views use `@Environment(\.modelContext)` to access the SwiftData context for CRUD operations
 - `@Bindable` is used with Counter objects to enable two-way binding in views
 
+## Swift commenting convention
+
+When creating a new Swift class, struct, actor, enum, protocol, or extension, add a documentation comment immediately above the declaration.
+
+Use Swift documentation comments with triple slashes.
+
+The comment should briefly describe the type’s responsibility in one sentence. Do not add obvious or redundant comments.
+
+Example:
+
+/// Stores and manages user-facing counter state.
+@Model
+final class Counter {
+    ...
+}
+
 ## Development Commands
 
 ### Building

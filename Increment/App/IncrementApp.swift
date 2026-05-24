@@ -20,10 +20,11 @@ struct IncrementApp: App {
     private let modelContainer: ModelContainer
 
     private var shouldShowLanding: Bool {
-        guard !Self.isUITesting else { return false }
-
-        let elapsed = Date().timeIntervalSince1970 - lastSeenLanding
-        return elapsed >= landingInterval
+        LandingPresentationPolicy(landingInterval: landingInterval).shouldShowLanding(
+            lastSeenLanding: lastSeenLanding,
+            now: Date(),
+            isUITesting: Self.isUITesting
+        )
     }
 
     init() {
@@ -75,5 +76,17 @@ struct IncrementApp: App {
         } catch {
             fatalError("Failed to create UI test ModelContainer: \(error)")
         }
+    }
+}
+
+/// Determines whether the landing page should be presented for a given launch context.
+struct LandingPresentationPolicy {
+    let landingInterval: TimeInterval
+
+    func shouldShowLanding(lastSeenLanding: Double, now: Date, isUITesting: Bool) -> Bool {
+        guard !isUITesting else { return false }
+
+        let elapsed = now.timeIntervalSince1970 - lastSeenLanding
+        return elapsed >= landingInterval
     }
 }
