@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		296946272FC3521B0098202E /* Increment-20260524-112053.xcresult in Resources */ = {isa = PBXBuildFile; fileRef = 296946222FC3521B0098202E /* Increment-20260524-112053.xcresult */; };
+		296946282FC3521B0098202E /* report-validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 296946252FC3521B0098202E /* report-validation.md */; };
+		296946292FC3521B0098202E /* Increment-20260524-112742.md in Resources */ = {isa = PBXBuildFile; fileRef = 296946232FC3521B0098202E /* Increment-20260524-112742.md */; };
+		2969462A2FC3521B0098202E /* Increment-20260524-112742.xcresult in Resources */ = {isa = PBXBuildFile; fileRef = 296946242FC3521B0098202E /* Increment-20260524-112742.xcresult */; };
 		29741E682FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
 		29741E692FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
 		29741E6A2FB7DE400055CE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29741E672FB7DE400055CE2A /* GoogleService-Info.plist */; };
@@ -61,6 +65,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		296946222FC3521B0098202E /* Increment-20260524-112053.xcresult */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Increment-20260524-112053.xcresult"; sourceTree = "<group>"; };
+		296946232FC3521B0098202E /* Increment-20260524-112742.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Increment-20260524-112742.md"; sourceTree = "<group>"; };
+		296946242FC3521B0098202E /* Increment-20260524-112742.xcresult */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Increment-20260524-112742.xcresult"; sourceTree = "<group>"; };
+		296946252FC3521B0098202E /* report-validation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "report-validation.md"; sourceTree = "<group>"; };
 		29712F972F62044C0056704D /* IncrementWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IncrementWidgetExtension.entitlements; sourceTree = "<group>"; };
 		29741E672FB7DE400055CE2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		29741E6C2FB7DF230055CE2A /* GoogleService-Info.template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.template.plist"; sourceTree = "<group>"; };
@@ -162,6 +170,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		296946262FC3521B0098202E /* TestReports */ = {
+			isa = PBXGroup;
+			children = (
+				296946222FC3521B0098202E /* Increment-20260524-112053.xcresult */,
+				296946232FC3521B0098202E /* Increment-20260524-112742.md */,
+				296946242FC3521B0098202E /* Increment-20260524-112742.xcresult */,
+				296946252FC3521B0098202E /* report-validation.md */,
+			);
+			path = TestReports;
+			sourceTree = "<group>";
+		};
 		2974E3512F58EA5500A468C0 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +196,7 @@
 				29E2643C2F5DDA190049F201 /* IncrementWidget */,
 				29E264372F5DDA190049F201 /* Frameworks */,
 				2974E35B2F58EA5500A468C0 /* Products */,
+				296946262FC3521B0098202E /* TestReports */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,6 +379,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				296946272FC3521B0098202E /* Increment-20260524-112053.xcresult in Resources */,
+				296946282FC3521B0098202E /* report-validation.md in Resources */,
+				296946292FC3521B0098202E /* Increment-20260524-112742.md in Resources */,
+				2969462A2FC3521B0098202E /* Increment-20260524-112742.xcresult in Resources */,
 				29741E6D2FB7DF230055CE2A /* GoogleService-Info.template.plist in Resources */,
 				29AB131C2F685CF100432592 /* .swiftformat in Resources */,
 				29AB131D2F685CF100432592 /* .swiftlint.yml in Resources */,
