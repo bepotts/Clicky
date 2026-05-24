@@ -7,35 +7,68 @@
 
 import XCTest
 
+/// UI tests for the Increment app.
 final class IncrementUITests: XCTestCase {
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests
-        // before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     @MainActor
-    func testExample() {
-        // UI tests must launch the application that they test.
+    func testCounterViewListItemIncrementButtonUpdatesCount() {
+        let app = launchApp()
+        let count = app.staticTexts["counter-list-item-count-ui-test-counter"]
+
+        XCTAssertTrue(count.waitForExistence(timeout: 5))
+        XCTAssertEqual(count.label, "6")
+
+        app.buttons["counter-list-item-increment-ui-test-counter"].tap()
+
+        wait(for: count, toHaveLabel: "8")
+    }
+
+    @MainActor
+    func testCounterViewListItemDecrementButtonUpdatesCount() {
+        let app = launchApp()
+        let count = app.staticTexts["counter-list-item-count-ui-test-counter"]
+
+        XCTAssertTrue(count.waitForExistence(timeout: 5))
+        XCTAssertEqual(count.label, "6")
+
+        app.buttons["counter-list-item-decrement-ui-test-counter"].tap()
+
+        wait(for: count, toHaveLabel: "4")
+    }
+
+    @MainActor
+    func testCounterViewListItemDecrementButtonDoesNotGoBelowZero() {
+        let app = launchApp()
+        let count = app.staticTexts["counter-list-item-count-ui-test-counter"]
+        let decrementButton = app.buttons["counter-list-item-decrement-ui-test-counter"]
+
+        XCTAssertTrue(count.waitForExistence(timeout: 5))
+
+        decrementButton.tap()
+        wait(for: count, toHaveLabel: "4")
+        decrementButton.tap()
+        wait(for: count, toHaveLabel: "2")
+        decrementButton.tap()
+        wait(for: count, toHaveLabel: "0")
+        decrementButton.tap()
+
+        wait(for: count, toHaveLabel: "0")
+    }
+
+    @MainActor
+    private func launchApp() -> XCUIApplication {
         let app = XCUIApplication()
+        app.launchArguments = ["-ui-testing"]
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        return app
     }
 
-    @MainActor
-    func testLaunchPerformance() {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+    private func wait(for element: XCUIElement, toHaveLabel expectedLabel: String, timeout: TimeInterval = 2) {
+        let predicate = NSPredicate(format: "label == %@", expectedLabel)
+        expectation(for: predicate, evaluatedWith: element)
+        waitForExpectations(timeout: timeout)
     }
 }
