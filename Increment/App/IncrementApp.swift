@@ -14,6 +14,7 @@ import SwiftUI
 @main
 struct IncrementApp: App {
     @AppStorage("lastSeenLanding") private var lastSeenLanding: Double = 0
+    @Environment(\.scenePhase) private var scenePhase
     // Time interval to show the landing page
     private let landingInterval: TimeInterval = 24 * 60 * 60 // 24 hours in seconds
     private let analyticsClient: any AnalyticsClient = FirebaseAnalyticsClient()
@@ -44,6 +45,11 @@ struct IncrementApp: App {
         }
         .environment(\.analyticsClient, analyticsClient)
         .modelContainer(modelContainer)
+        .onChange(of: scenePhase, initial: true) { _, newScenePhase in
+            if newScenePhase == .active {
+                analyticsClient.logEvent(.appOpened, parameters: nil)
+            }
+        }
     }
 
     private func configureFirebase() {
